@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link 
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+            crossorigin="anonymous"
+        >
+        <title>Random Inspirational Quote Machine</title>
+        <script>
+            const QUOTEBANK = [
+                {
+                    quote: "If not now, when?",
+                    author: "Hillel"
+                },
+                {
+                    quote: "Silence is luxurious.",
+                    author: "Jane Austen"
+                },
+                {
+                    quote: "Trust your creativity.",
+                    author: "Jeanette Winterson"
+                },
+                {
+                    quote: "Enjoy moments before they become memories.",
+                    author: "Dr. Seuss"
+                },
+                {
+                    quote: "I will find a way to make it happen.",
+                    author: "Eric Thomas"
+                },
+                {
+                    quote: "If you know you can do better.. then do better.",
+                    author: "Maya Angelou"
+                },
+                {
+                    quote: "Champions don't make excuses.",
+                    author: "Harvey Specter"
+                },
+                {
+                    quote: "Become the hardest working person you know.",
+                    author: "Unknown"
+                },
+                {
+                    quote: "Life isn't about finding yourself. It's about creating yourself.",
+                    author: "George Bernard Shaw"
+                },
+                {
+                    quote: "If you can't stop thinking about it, don't stop working for it.",
+                    author: "Michael Jordan"
+                },
+                {
+                    quote: "Progress, not perfection.",
+                    author: "Bill Phillips"
+                },
+                {
+                    quote: "Don't talk, act. Don't say, show. Don't promise, prove.",
+                    author: "Katy Evans"
+                },
+                {
+                    quote: "No risk, no story.",
+                    author: "Lisa Staff"
+                },
+                {
+                    quote: "Just because it's hard doesn't mean it's impossible. You can do it.",
+                    author: "Lysa TerKeurst"
+                },
+                {
+                    quote: "Mistakes are proof you're trying.",
+                    author: "Jennifer Lim"
+                },
+                {
+                    quote: "Don't stop till you are proud.",
+                    author: "Harvey Newton"
+                },
+                {
+                    quote: "I will give my best everyday.",
+                    author: "Unknown"
+                },
+                {
+                    quote: "your life is as good as your mindset.",
+                    author: "Unknown"
+                },
+                {
+                    quote: "prove to yourself, not others.",
+                    author: "Unknown"
+                },
+                
+            ]
+            
+            window.onload = init;
+            function init() {
+                generateQuote()
+            }
+
+            function generateQuote() {
+                let randomIndex = Math.floor(Math.random() * QUOTEBANK.length)
+                let randomQuoteData = QUOTEBANK[randomIndex]
+
+                let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="
+                let quoteInApiFormat = randomQuoteData.quote.replace(/ /g, "%20")
+                twitterLink += quoteInApiFormat
+                let authorInApiFormat = randomQuoteData.author.replace(/ /g, "20%")
+                twitterLink += " " + authorInApiFormat
+
+                document.getElementById("tweet-quote").href = twitterLink
+                document.getElementById("text").innerText = randomQuoteData.quote
+                document.getElementById("author").innerText = randomQuoteData.author
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-md-6 offset-md-3">    
+                    <wrapper id="quote-box">
+                        <div class="card">
+                            <div class="card-header text-center">Inspirational Quote Machine</div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <div id="text"></div>
+                                </h5>
+                                <p class="card-text"><div id="author"></div></p>
+                                <button id="new-quote" onClick=generateQuote() class="btn btn-success">New Quote</button>
+                                <a href="#" id="tweet-quote" target="_blank" class="btn btn-primary">Tweet  Quote</a>
+                            </div>
+                        </div>
+                    </wrapper>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    </body>
+</html>
